@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: app
-        image: ""
+        image: "albertomurrodrigo/proyecto-mds:latest"
         resources:
-        requests:
-          cpu: 10m
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
