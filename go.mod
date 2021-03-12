@@ -1,3 +1,3 @@
-module main
+module proyecto
 
 go 1.16

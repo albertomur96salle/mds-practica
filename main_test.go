@@ -1,4 +1,4 @@
-package mainimport
+package main
 
 import (
 	"net/http"
@@ -7,12 +7,12 @@ import (
 )
 
 func TestHelloWorld(t *testing.T) {
-	req, err := http.NewRequest("GET", "/", nil)
+	_, err := http.NewRequest("GET", "/", nil)
 	if err != nil {
 		t.Fatalf("could not created request: %v", err)
 	}
 	server := &Server{}
-	t.Run("return Paco's score", func(t *testing.T) {
+	t.Run("return hello world message", func(t *testing.T) {
 		response := httptest.NewRecorder()
 		request := createNewRequest()
 		server.ServeHTTP(response, request)
