@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = "albertomurrodrigo/proyectomds"
+        registry = "albertomurrodrigo/proyecto-mds"
         GOCACHE = "/tmp"
     }
     stages {
@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Publish') {
             environment {
-                registryCredential = 'dockerhub'
+                registryCredential = 'dockerhub_id'
             }
             steps{
                 script {
