@@ -18,7 +18,7 @@ func TestHelloWorld(t *testing.T) {
 		server.ServeHTTP(response, request)
 
 		assertStatus(response.Code, http.StatusOK, t)
-		assertResponseBody(t, "{\"message\": \"hello world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\"}", response.Body.String())
+		assertResponseBody(t, "{\"message\": \"hello world#\"}", response.Body.String())
 
 	})
 }
