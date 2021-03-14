@@ -6,6 +6,7 @@ pipeline {
     }
     stages {
         stage('Build') {
+        stage('Build') {
             agent {
                 docker {
                     image 'golang'
@@ -56,7 +57,7 @@ pipeline {
         stage ('Deploy') {
             steps {
                 script{
-                    kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "mykubeconfig")
+                    sh 'kubectl apply -f deployment.yaml'
                 }
             }
         }
