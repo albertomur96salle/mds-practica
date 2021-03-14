@@ -6,7 +6,6 @@ pipeline {
     }
     stages {
         stage('Build') {
-        stage('Build') {
             agent {
                 docker {
                     image 'golang'
@@ -56,7 +55,7 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
-                script{
+                script {
                     sh 'kubectl apply -f deployment.yaml'
                 }
             }
