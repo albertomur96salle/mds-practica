@@ -64,7 +64,7 @@ pipeline {
         stage ('Smoke') {
             steps {
                 script {
-                    sh 'go run main_smoketest.go'
+                    sh 'go run smoke/main_smoke.go'
                 }
             }
         }
