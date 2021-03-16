@@ -61,6 +61,12 @@ pipeline {
                 }
             }
         }
-
+        stage ('Smoke') {
+            steps {
+                script {
+                    sh 'go run main_smoketest.go'
+                }
+            }
+        }
     }
 }
