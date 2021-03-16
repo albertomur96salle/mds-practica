@@ -62,19 +62,11 @@ pipeline {
             }
         }
         stage ('Smoke') {
-            agent {
-                docker {
-                    image 'golang'
-                }
-            }
             steps {
-                // Create our project directory.
-                sh 'cd ${GOPATH}/src'
-                sh 'mkdir -p ${GOPATH}/src/hello-world'
-                // Copy all files in our Jenkins workspace to our project directory.
-                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
-                // Remove cached test results.
-                sh 'go run smoke/main_smoke.go'
+                script {
+                    // Remove cached test results.
+                    sh 'go run smoke/main_smoke.go'
+                }
             }
         }
     }
