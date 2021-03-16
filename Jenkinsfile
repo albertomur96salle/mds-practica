@@ -65,7 +65,7 @@ pipeline {
             steps {
                 script {
                     // Remove cached test results.
-                    sh 'pwd'
+                    sh 'go run /var/lib/jenkins/workspace/proyecto/smoke/main_smoke.go'
                 }
             }
         }
