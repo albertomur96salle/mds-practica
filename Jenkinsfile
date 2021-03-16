@@ -65,7 +65,7 @@ pipeline {
             steps {
                 script {
                     // Remove cached test results.
-                    sh 'go run /var/lib/jenkins/workspace/proyecto/smoke/main_smoke.go'
+                    sh '/home/alberto/sdk/go1.16.2/bin/go run smoke/main_smoke.go'
                 }
             }
         }
