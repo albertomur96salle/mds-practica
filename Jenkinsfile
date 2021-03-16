@@ -65,7 +65,7 @@ pipeline {
             steps {
                 script {
                     // Remove cached test results.
-                    sh 'go run smoke/main_smoke.go'
+                    sh 'pwd'
                 }
             }
         }
