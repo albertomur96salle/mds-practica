@@ -51,6 +51,7 @@ pipeline {
                 sh 'mkdir -p ${GOPATH}/src/hello-world'
                 // Copy all files in our Jenkins workspace to our project directory.
                 sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
+                sh 'go clean -cache'
                 catchError {
                     sh 'golangci-lint run'
                 }
