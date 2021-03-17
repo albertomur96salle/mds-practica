@@ -50,7 +50,6 @@ pipeline {
                     echo 'Static code analysis stage successful'
                 }
                 failure {
-                    echo 'Static code analysis stage failed'
                     error('Build is aborted due to failure of static code analysis stage')
                 }
             }
