@@ -42,7 +42,7 @@ pipeline {
         stage('Static code analysis'){
             steps {
                 catchError {
-                    sh 'golangci-lint run'
+                    sh '/home/alberto/go/bin/golangci-lint run'
                 }
             }
             post {
