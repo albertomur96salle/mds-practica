@@ -42,7 +42,7 @@ pipeline {
         stage('Static code analysis'){
             agent {
                 docker {
-                    image 'golangci-lint'
+                    image 'golangci/golangci-lint'
                 }
             }
             steps {
