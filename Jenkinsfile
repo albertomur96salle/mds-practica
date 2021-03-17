@@ -40,9 +40,19 @@ pipeline {
             }
         }
         stage('Static code analysis'){
+            agent {
+                docker {
+                    image 'golangci-lint'
+                }
+            }
             steps {
+                // Create our project directory.
+                sh 'cd ${GOPATH}/src'
+                sh 'mkdir -p ${GOPATH}/src/hello-world'
+                // Copy all files in our Jenkins workspace to our project directory.
+                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
                 catchError {
-                    sh '/home/alberto/go/bin/golangci-lint run'
+                    sh 'golangci-lint run'
                 }
             }
             post {
