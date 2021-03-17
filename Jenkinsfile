@@ -21,7 +21,7 @@ pipeline {
                 sh 'go build'
             }
         }
-        stage('Test') {
+        stage('Unit tests') {
             agent {
                 docker {
                     image 'golang'
@@ -37,6 +37,22 @@ pipeline {
                 sh 'go clean -cache'
                 // Run Unit Tests.
                 sh 'go test ./... -v -short'
+            }
+        }
+        stage('Static code analysis'){
+            steps {
+                catchError {
+                    sh 'golangci-lint run'
+                }
+            }
+            post {
+                success {
+                    echo 'Static code analysis stage successful'
+                }
+                failure {
+                    echo 'Static code analysis stage failed'
+                    error('Build is aborted due to failure of static code analysis stage')
+                }
             }
         }
         stage('Publish') {
