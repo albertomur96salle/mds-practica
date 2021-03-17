@@ -2,7 +2,9 @@ pipeline {
     agent any
     environment {
         registry = "albertomurrodrigo/proyecto-mds"
-        GOCACHE = "/tmp"
+        GOCACHE = "/tmp/.cache"
+        XDG_CACHE_HOME = "/tmp/.cache"
+
     }
     stages {
         stage('Build') {
