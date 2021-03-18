@@ -34,11 +34,13 @@ pipeline {
                 sh 'cd ${GOPATH}/src'
                 sh 'mkdir -p ${GOPATH}/src/hello-world'
                 // Copy all files in our Jenkins workspace to our project directory.
-                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
+                sh 'cp -r ${WORKSPACE}/go.mod ${GOPATH}/src/hello-world'
+                sh 'cp -r ${WORKSPACE}/hello_json.go ${GOPATH}/src/hello-world'
+                sh 'cp -r ${WORKSPACE}/hello_json_test.go ${GOPATH}/src/hello-world'
                 // Remove cached test results.
                 sh 'go clean -cache'
                 // Run Unit Tests.
-                sh 'go test ./... -v -short'
+                sh 'go test hello.* -v -short'
             }
         }
         stage('Static code analysis'){
@@ -79,6 +81,24 @@ pipeline {
                         appimage.push('latest')
                     }
                 }
+            }
+        }
+        stage('Unit tests') {
+            agent {
+                docker {
+                    image 'golang'
+                }
+            }
+            steps {
+                // Create our project directory.
+                sh 'cd ${GOPATH}/src'
+                sh 'mkdir -p ${GOPATH}/src/hello-world'
+                // Copy all files in our Jenkins workspace to our project directory.
+                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
+                // Remove cached test results.
+                sh 'go clean -cache'
+                // Run Unit Tests.
+                sh 'go test ./... -v -short'
             }
         }
         stage ('Deploy') {

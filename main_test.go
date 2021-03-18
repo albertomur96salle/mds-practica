@@ -18,7 +18,7 @@ func TestHelloWorld(t *testing.T) {
 		server.ServeHTTP(response, request)
 
 		assertStatus(response.Code, http.StatusOK, t)
-		assertResponseBody(t, "{\"message\": \"hello world\"}", response.Body.String())
+		assertResponseBody(t, "{\"message\": \"hello wold\"}", response.Body.String())
 
 	})
 }
@@ -36,6 +36,6 @@ func assertStatus(result int, expected int, t *testing.T) {
 
 func assertResponseBody(t *testing.T, expected string, result string) {
 	if result != expected {
-		t.Errorf("result '%s', expected '%s'", result, expected)
+		t.Errorf("result '%s', expected '%s'", expected, result)
 	}
 }
