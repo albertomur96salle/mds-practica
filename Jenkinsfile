@@ -83,7 +83,7 @@ pipeline {
                 }
             }
         }
-        stage('Unit tests') {
+        stage('Acceptance tests') {
             agent {
                 docker {
                     image 'golang'
