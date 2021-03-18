@@ -40,7 +40,7 @@ pipeline {
                 // Remove cached test results.
                 sh 'go clean -cache'
                 // Run Unit Tests.
-                sh 'go test hello.* -v -short'
+                sh 'go test hello* -v -short'
             }
         }
         stage('Static code analysis'){
